@@ -14,7 +14,7 @@ public class PointFactory {
     public PointFactory(File dataFile) throws IOException{
         this.dataFile = dataFile;
         String tempfiletype = dataFile.getCanonicalPath();
-        if (tempfiletype.contains(".csc")){
+        if (tempfiletype.contains(".csv")){
             fileType = ".csv";
         }else if (tempfiletype.contains(".dat")){
             fileType = ".dat";
@@ -30,7 +30,7 @@ public class PointFactory {
             String line = console.readLine();
             String[] rawDataLine;
             if (fileType.equals(".csv")){
-            while (line != null) {
+            while ((line != null) && (!line.trim().equals(""))){
                 rawDataLine = line.split(",\\s*");
                 rawDataLine[1] = rawDataLine[1].replaceAll(">", "");
                 rawDataLine[1] = rawDataLine[1].replaceAll("<", "");
@@ -42,7 +42,7 @@ public class PointFactory {
             }
             }else if(fileType.equals(".dat")){
                 while ((line != null) && (!line.trim().equals(""))) {
-                    rawDataLine = line.split("\\s");
+                    rawDataLine = line.split("\\t");
                     rawDataLine[1] = rawDataLine[1].replaceAll(">", "");
                     rawDataLine[1] = rawDataLine[1].replaceAll("<", "");
                     rawDataLine[0] = rawDataLine[0].replaceAll("<", "");
