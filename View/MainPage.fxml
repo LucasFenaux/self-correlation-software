@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane fx:id="mainPain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" style="-fx-padding: 10;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainPageController">
+   <children>
+      <Label fx:id="lowerBoundLbl" layoutX="79.0" layoutY="70.0" prefHeight="31.0" prefWidth="267.0" text="Enter lower bound of the scan (days)" />
+      <Label fx:id="upperBoundLbl" layoutX="79.0" layoutY="164.0" text="Enter upper bound of the scan (days)" />
+      <Label fx:id="binLbl" layoutX="79.0" layoutY="254.0" text="Enter number of bins" />
+      <TextField fx:id="lowerBoundTxt" layoutX="512.0" layoutY="70.0" />
+      <TextField fx:id="upperBoundTxt" layoutX="512.0" layoutY="159.0" />
+      <TextField fx:id="binTxt" layoutX="512.0" layoutY="249.0" />
+      <Button fx:id="startBtn" layoutX="714.0" layoutY="336.0" mnemonicParsing="false" onAction="#printGraph" text="Start" />
+      <Button fx:id="returnBtn" layoutX="79.0" layoutY="336.0" mnemonicParsing="false" onAction="#returnToSelection" text="Return" />
+   </children>
+</Pane>

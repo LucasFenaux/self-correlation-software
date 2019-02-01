@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.GraphPageController">
+   <children>
+      <Button fx:id="exitDone" layoutX="700.0" layoutY="450.0" mnemonicParsing="false" onAction="#buttonPushed" text="Done" />
+   </children>
+</AnchorPane>
