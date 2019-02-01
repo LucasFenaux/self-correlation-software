@@ -9,6 +9,8 @@ How to use it:
     self-correlation analysis.
   The number of bins represents the precision depending on the number of data points you have. If you use a number of bins too great          compared to the number of data points you have, the bins might have too few data points in them and the result will be meaningless.
     The csv file just has to be defined as a normal .csv file. If the file is in .dat format, the two columns must be seperated by a single     tabulation.
+  There are two data files that can be used to test the program, the data.csv file and the ASAS-SN-V J052337.99-694445.8.dat file, they
+  both represent the light curve of variable stars found on the ASAS data base.
   
 Tips:
   If you are not sure whether your data file is in a correct format, put your data in two columns in Excel and save it as a .csv file and       it will work.
