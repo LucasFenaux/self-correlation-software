@@ -1,9 +1,7 @@
 package Controller;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.MissingFormatArgumentException;
 import java.util.ResourceBundle;
 import java.lang.Number;
 import java.lang.Double;
@@ -17,11 +15,8 @@ import javafx.scene.Scene;
 import javafx.scene.chart.XYChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.ScatterChart;
-import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 
@@ -87,7 +82,7 @@ public class MainPageController {
         ymin = min;
         ymax = max;
         ystep = max/bins.size();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/GraphPage.fxml"));
+        FXMLLoader loader = new FXMLLoader(MainPageController.class.getResource("/View/GraphPage.fxml"));
         Stage stage = (Stage) startBtn.getScene().getWindow();
 
         stage.setTitle("Results");
@@ -113,7 +108,7 @@ public class MainPageController {
 
     @FXML
     private void returnToSelection() throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/SelectionPage.fxml"));
+        FXMLLoader loader = new FXMLLoader(MainPageController.class.getResource("/View/SelectionPage.fxml"));
         Scene scene = new Scene(loader.load());
         Stage stage = (Stage) startBtn.getScene().getWindow();
         stage.setScene(scene);
