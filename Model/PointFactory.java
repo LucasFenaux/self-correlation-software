@@ -35,7 +35,7 @@ public class PointFactory {
                 rawDataLine[1] = rawDataLine[1].replaceAll(">", "");
                 rawDataLine[1] = rawDataLine[1].replaceAll("<", "");
                 rawDataLine[0] = rawDataLine[0].replaceAll("<", "");
-                rawDataLine[0] = rawDataLine[0].replaceAll("<", "");
+                rawDataLine[0] = rawDataLine[0].replaceAll(">", "");
 
                 data.add(convertToPoint(rawDataLine));
                 line = console.readLine();
@@ -46,7 +46,7 @@ public class PointFactory {
                     rawDataLine[1] = rawDataLine[1].replaceAll(">", "");
                     rawDataLine[1] = rawDataLine[1].replaceAll("<", "");
                     rawDataLine[0] = rawDataLine[0].replaceAll("<", "");
-                    rawDataLine[0] = rawDataLine[0].replaceAll("<", "");
+                    rawDataLine[0] = rawDataLine[0].replaceAll(">", "");
 
                     data.add(convertToPoint(rawDataLine));
                     line = console.readLine();
