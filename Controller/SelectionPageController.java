@@ -4,11 +4,8 @@ import Model.SCS;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.ChoiceBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
-import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -59,7 +56,7 @@ public class SelectionPageController {
 
     @FXML
     private void goToMainPage() throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/MainPage.fxml"));
+        FXMLLoader loader = new FXMLLoader(SelectionPageController.class.getResource("/View/MainPage.fxml"));
         Stage stage = (Stage) chooseBtn.getScene().getWindow();
         Scene scene = new Scene(loader.load());
         stage.setScene(scene);
