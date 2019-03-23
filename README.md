@@ -10,6 +10,7 @@ How to use it:
     self-correlation analysis.
   The number of bins represents the precision depending on the number of data points you have. If you use a number of bins too great          compared to the number of data points you have, the bins might have too few data points in them and the result will be meaningless.
     The csv file just has to be defined as a normal .csv file. If the file is in .dat format, the two columns must be seperated by a single     tabulation.
+  The data of the resulting graph can be written to a "results.csv" file if chosen to. This is meant so that people using this software     can use the results produced in other analysis or to reformat the graph to their will.
   There are two data files that can be used to test the program, the data.csv file and the ASAS-SN-V J052337.99-694445.8.dat file, they
   both represent the light curve of variable stars found on the ASAS data base.
   
@@ -22,7 +23,7 @@ Warning:
   The program works perfectly if the input for the lower and upper bound of the period scanned are positive and if the number of bins is a    natural number (!=0). However, it is not yet completely error proof if the input are not in the correct format, it will be fixed in        later updates.
   
 Recent adds:
-  Added an executable for the program.
+  Possibility to extract the data from the resulting graph to a file named "results.csv" that will be in the same file as the program with    the possibility to choose whether to overwrite previously written data or to append the new result to the previously written data.
 
 Upcoming changes:
   Better error handling in case of incorrect/invalid input given, the program already works with valid input.
