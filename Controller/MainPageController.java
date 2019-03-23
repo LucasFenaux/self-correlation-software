@@ -1,10 +1,11 @@
 package Controller;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.lang.Number;
 import java.lang.Double;
+
 
 import Model.Bin;
 import Model.SCS;
@@ -16,6 +17,7 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.ScatterChart;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -27,6 +29,8 @@ public class MainPageController {
     private double ymin;
     private double ymax;
     private double ystep;
+    private boolean extract_data = false;
+    private boolean overwrite = false;
 
     @FXML
     private TextField FilePathTxt;
@@ -49,6 +53,12 @@ public class MainPageController {
     @FXML
     private ResourceBundle resources;
 
+    @FXML
+    private CheckBox extract_results_checkbox;
+
+    @FXML
+    private CheckBox ovewrite_checkbox;
+
 
     public MainPageController(){
 
@@ -58,10 +68,43 @@ public class MainPageController {
     private void initialize(){
 
     }
+
+    @FXML
+    private void selectedExtract(){
+        extract_data = true;
+    }
+
+    @FXML
+    private void selectedOverwrite(){
+        overwrite = true;
+    }
+
     @FXML
     private void printGraph() throws IOException{
         this.bins = SCS.start2(Double.parseDouble(lowerBoundTxt.getText()),
                 Double.parseDouble(upperBoundTxt.getText()), Integer.parseInt(binTxt.getText()));
+        if(extract_data) {
+            File outputFile = new File("results.csv");
+            if (overwrite){
+                if (outputFile.exists()){
+                    outputFile.delete();
+                }
+            }
+            try {
+                Writer output = new BufferedWriter(new FileWriter("results.csv", true));
+                for (Bin bin : bins) {
+                    StringBuilder item = new StringBuilder();
+                    item.append(Double.toString(bin.getAverage()));
+                    item.append(",");
+                    item.append(Double.toString(bin.getMvar()));
+                    output.append(item);
+                    output.append(System.lineSeparator());
+                }
+                output.close();
+            } catch (IOException exception){
+                System.err.println("could not open the file to extract the data results");
+            }
+        }
         this.data = new XYChart.Series<>();
         data.setName("Bin data");
         for (Bin bin : bins) {
@@ -81,23 +124,22 @@ public class MainPageController {
         }
         ymin = min;
         ymax = max;
-        ystep = max/bins.size();
+        ystep = (max-min)/bins.size();
         FXMLLoader loader = new FXMLLoader(MainPageController.class.getResource("/View/GraphPage.fxml"));
         Stage stage = (Stage) startBtn.getScene().getWindow();
 
         stage.setTitle("Results");
 
-        NumberAxis xAxis = new NumberAxis(SCS.start, SCS.end, SCS.number_bins);
-        NumberAxis yAxis = new NumberAxis(Double.max(0, ymin-ystep), ymax + ystep, ystep);
+        NumberAxis xAxis = new NumberAxis(SCS.start, SCS.end, (SCS.end - SCS.start)/SCS.number_bins);
+        NumberAxis yAxis = new NumberAxis(0, ymax + ystep, ystep);
 
         ScatterChart<Number,Number> sc = new ScatterChart<Number,Number>(xAxis,yAxis);
-        sc.setPrefSize(700, 400);
-        sc.setLayoutX(25);
-        sc.setLayoutY(10);
-        sc.setTitle("Results");
+        sc.setPrefSize(750, 450);
+        sc.setLayoutX(75);
+        sc.setLayoutY(30);
+        sc.setTitle("     Self-correlation analysis");
         sc.getData().add(data);
         sc.setId("ScatterChart");
-
 
         Scene scene = new Scene(new Group());
         ((Group)scene.getRoot()).getChildren().add(loader.load());
